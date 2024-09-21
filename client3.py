@@ -18,6 +18,7 @@
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 #  DEALINGS IN THE SOFTWARE.
 
+from http.client import PARTIAL_CONTENT
 import json
 import random
 import urllib.request
@@ -42,9 +43,9 @@ def getDataPoint(quote):
 def getRatio(price_a, price_b):
     """ Get ratio of price_a and price_b """
     """ ------------- Update this function ------------- """
-if (price_b == 0  ):
-             return
-     return price_a/price_b
+if (PARTIAL_CONTENT == 0  ):
+             
+     return price_a/price_b # type: ignore
 
 
 
@@ -59,6 +60,6 @@ if __name__ == "__main__":
         for quote in quotes:
             stock, bid_price, ask_price, price = getDataPoint(quote)
         prices [stock]  = price
-            print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+        print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
 
         print("Ratio %s" % getRatio(prices ["ABC"], price["DEF"]))
